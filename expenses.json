@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "amount": 25.5,
+    "category": "Food",
+    "subCategory": "Restaurant",
+    "description": "Lunch at McDonald's",
+    "date": "2025-09-06T15:25:38.691Z"
+  },
+  {
+    "id": 2,
+    "amount": 100,
+    "category": "Bills",
+    "subCategory": "Electricity",
+    "description": "Electricity bill for August",
+    "date": "2025-09-06T15:25:38.707Z"
+  },
+  {
+    "id": 3,
+    "amount": 25.5,
+    "category": "Food",
+    "subCategory": "Restaurant",
+    "description": "Lunch at McDonald's",
+    "date": "9/6/2025, 3:26:28 PM"
+  },
+  {
+    "id": 4,
+    "amount": 100,
+    "category": "Bills",
+    "subCategory": "Electricity",
+    "description": "Electricity bill for August",
+    "date": "9/6/2025, 3:26:29 PM"
+  },
+  {
+    "id": 6,
+    "amount": 25.5,
+    "category": "Food",
+    "subCategory": "Restaurant",
+    "description": "Lunch at McDonald's",
+    "date": "9/6/2025, 3:30:31 PM"
+  },
+  {
+    "id": 7,
+    "amount": 100,
+    "category": "Bills",
+    "subCategory": "Electricity",
+    "description": "Electricity bill for August",
+    "date": "9/6/2025, 3:30:31 PM"
+  },
+  {
+    "id": 7,
+    "amount": 25.5,
+    "category": "Food",
+    "subCategory": "Restaurant",
+    "description": "Lunch at McDonald's",
+    "date": "9/6/2025, 3:31:53 PM"
+  },
+  {
+    "id": 8,
+    "amount": 100,
+    "category": "Bills",
+    "subCategory": "Electricity",
+    "description": "Electricity bill for August",
+    "date": "9/6/2025, 3:31:53 PM"
+  },
+  {
+    "id": 9,
+    "amount": 25.5,
+    "category": "Food",
+    "subCategory": "Restaurant",
+    "description": "Lunch at McDonald's",
+    "date": "9/6/2025, 3:32:19 PM"
+  },
+  {
+    "id": 10,
+    "amount": 100,
+    "category": "Bills",
+    "subCategory": "Electricity",
+    "description": "Electricity bill for August",
+    "date": "9/6/2025, 3:32:19 PM"
+  },
+  {
+    "id": 11,
+    "amount": 25.5,
+    "category": "Food",
+    "subCategory": "Restaurant",
+    "description": "Lunch at McDonald's",
+    "date": "9/6/2025, 3:32:39 PM"
+  },
+  {
+    "id": 12,
+    "amount": 100,
+    "category": "Bills",
+    "subCategory": "Electricity",
+    "description": "Electricity bill for August",
+    "date": "9/6/2025, 3:32:39 PM"
+  },
+  {
+    "id": 12,
+    "amount": 25.5,
+    "category": "Food",
+    "subCategory": "Restaurant",
+    "description": "Lunch at McDonald's",
+    "date": "9/6/2025, 3:33:47 PM"
+  },
+  {
+    "id": 13,
+    "amount": 100,
+    "category": "Bills",
+    "subCategory": "Electricity",
+    "description": "Electricity bill for August",
+    "date": "9/6/2025, 3:33:47 PM"
+  },
+  {
+    "id": 15,
+    "amount": 25.5,
+    "category": "Food",
+    "subCategory": "Restaurant",
+    "description": "Lunch at McDonald's",
+    "date": "9/6/2025, 3:35:33 PM"
+  },
+  {
+    "id": 16,
+    "amount": 100,
+    "category": "Bills",
+    "subCategory": "Electricity",
+    "description": "Electricity bill for August",
+    "date": "9/6/2025, 3:35:33 PM"
+  }
+]
