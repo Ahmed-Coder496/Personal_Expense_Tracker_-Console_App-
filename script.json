@@ -1,17 +1,14 @@
 [
   {
     "id": 1,
-    "name": "Ali",
-    "age": 20
+    "food": "Burger",
+    "travel": "texi",
+    "bills": "electricity"
   },
   {
     "id": 2,
-    "name": "Sara",
-    "age": 25
-  },
-  {
-    "id": 3,
-    "name": "Ahmed",
-    "age": 25
+    "food": "Biryani",
+    "travel": "Flight",
+    "bills": "recharge"
   }
 ]

@@ -1,39 +1,32 @@
-// fs module import کیا (file system کے لیے)
 const fs = require("fs");
 
-// data.json کا path
 const filePath = "./script.json";
 
-// JSON file سے data پڑھنے والا function
 function readData() {
-  const data = fs.readFileSync(filePath, "utf-8");
-  return JSON.parse(data); // string → JSON
+  const catagories = fs.readFileSync(filePath, "utf-8");
+  return JSON.parse(catagories);
 }
 
-// JSON file میں data لکھنے والا function
-function writeData(data) {
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+function writeData(catagories) {
+  fs.writeFileSync(filePath, JSON.stringify(catagories, null, 2));
 }
 
-// نیا user add کرنے والا function
-function addUser(name, age) {
-  const users = readData(); // پرانا data پڑھو
-  const newUser = { id: users.length + 1, name, age };
+function addExpenses(food, travel, bills) {
+  const Expenses = readData();
+  const newExpenses = { id: Expenses.length + 1, food, travel, bills };
 
-  users.push(newUser);      // نیا user add کرو
-  writeData(users);         // دوبارہ file میں save کرو
+  Expenses.push(newExpenses);
+  writeData(Expenses);
 
-  console.log("✅ User Added:", newUser);
+  console.log("✅ Expenses Added:", newExpenses);
 }
 
-// تمام users دیکھنے والا function
-function viewUsers() {
-  const users = readData();
-  console.log("📒 All Users:", users);
+function viewExpenses() {
+  const Expenses = readData();
+  console.log("📒 All Users:", Expenses);
 }
 
 // --- Example Run ---
-addUser("Ali", 20);
-addUser("Sara", 25);
-addUser("Ahmed", 25);
-viewUsers();
+addExpenses("Burger", "texi","electricity");
+addExpenses("Biryani", "Flight","recharge");
+viewExpenses();
