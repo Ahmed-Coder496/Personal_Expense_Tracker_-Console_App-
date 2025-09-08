@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "amount": 299,
+    "cetegory": "Food",
+    "subCetegory": "Resturent",
+    "description": "Mc,Donals Lunch",
+    "date": "08/09/2025"
+  },
+  {
+    "id": 2,
+    "amount": 299,
+    "cetegory": "tarvel",
+    "subCetegory": "Flight",
+    "description": "Flight of UK",
+    "date": "08/09/2025"
+  }
+]
