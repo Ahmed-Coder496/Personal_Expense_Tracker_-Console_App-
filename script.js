@@ -58,8 +58,8 @@ function deleteExpense(id) {
             output: process.stdout
         });
 
-        readline.question("Do you want to undo? (yes/no): ", (answer) => {
-            if (answer.toLowerCase() === "y") {
+        readline.question("Do you want to undo your action?", (answer) => {
+            if (answer.toLowerCase() === "yes") {
                 expenses.splice(index, 0, deletedExpense); // restore
                 writeExpenses(expenses);
                 console.log("♻️ Delete Undone. Expense Restored!");
@@ -73,7 +73,48 @@ function deleteExpense(id) {
 }
 
 deleteExpense(1)
-// function deleteExpenses (id){
-//     fs.unlinkSync(filePath , id);
-// }
-// deleteExpenses([1])
+
+
+function updateExpense(id) {
+    const expenses = readExpenses();
+    const index = expenses.findIndex(exp => exp.id === id);
+
+    if (index === -1) {
+        console.log("❌ Expense not found!");
+        return;
+    }
+
+    const updateExpense = expenses[index];
+    expenses.splice(index, 1); // remove
+
+    console.log(" Expense updated within 5 sec");
+
+    // Wait for update
+    setTimeout(() => {
+        const readline = require("readline").createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+
+        readline.question("Do you want update your expense", (answer) => {
+            if (answer.toLowerCase() === "yes") {
+                expenses.splice(index, 0, updateExpense); // restore
+                writeExpenses(expenses);
+                console.log("Enter your Expenses details");
+            } else {
+                writeExpenses(expenses);
+                console.log("♻️ Discard Updation. Expense will not change!");
+            }
+            readline.close();
+        });
+    }, 10000);
+}
+
+updateExpense(1)
+
+
+
+
+
+
+
