@@ -29,11 +29,12 @@ function addExpenses(amount, cetegory, subCetegory, description, date) {
 function viewExpenses (){
     const allExpenses = readExpenses()
     console.log(`All Expenses:`, allExpenses);
-    
+
 }
 
-addExpenses("299$", "Food", "Resturent", "Mc,Donals Lunch", (dt.toLocaleDateString("en-PK")))
-addExpenses("209$", "tarvel", "Flight", "Flight of UK", (dt.toLocaleDateString("en-PK")))
+addExpenses("199$", "Food", "Resturent", "Mc,Donals Lunch", (dt.toLocaleDateString("en-PK")))
+addExpenses("270$", "tarvel", "Flight", "Flight of UK", (dt.toLocaleDateString("en-PK")))
+addExpenses("10$", "bills", "Internet Recharge", "Zong ka internet recharge kawana hai", (dt.toLocaleDateString("en-PK")))
 viewExpenses()
 
 function deleteExpense(id) {
@@ -68,7 +69,7 @@ function deleteExpense(id) {
             }
             readline.close();
         });
-    }, 1000);
+    }, 5000);
 }
 
 deleteExpense(1)
