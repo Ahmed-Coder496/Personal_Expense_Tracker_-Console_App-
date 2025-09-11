@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "amount": "199$",
     "cetegory": "Food",
     "subCetegory": "Resturent",
@@ -7,6 +8,7 @@
     "date": "11/09/2025"
   },
   {
+    "id": 2,
     "amount": "270$",
     "cetegory": "tarvel",
     "subCetegory": "Flight",
@@ -14,6 +16,7 @@
     "date": "11/09/2025"
   },
   {
+    "id": 3,
     "amount": "10$",
     "cetegory": "bills",
     "subCetegory": "Internet Recharge",

@@ -22,7 +22,6 @@ function addExpenses(amount, cetegory, subCetegory, description, date) {
     const newExpenses = { id: expenses.length + 1, amount, cetegory, subCetegory, description, date }
     expenses.push(newExpenses)
     writeExpenses(expenses)
-    console.log("Expense" , expenses);
 
 }
 
@@ -42,7 +41,7 @@ function deleteExpense(id) {
     const index = expenses.findIndex(exp => exp.id === id);
 
     if (index === -1) {
-        console.log("❌ Expense not found!");
+        console.log("Expense not found!");
         return;
     }
 
@@ -62,7 +61,8 @@ function deleteExpense(id) {
             if (answer.toLowerCase() === "yes") {
                 expenses.splice(index, 0, deletedExpense); // restore
                 writeExpenses(expenses);
-                console.log("Delete Undone. Expense Restored!");
+                console.log("Deletion Cancelled. Expense Restored!");
+                viewExpenses()
             } else {
                 writeExpenses(expenses);
                 console.log("Expense Permanently Deleted. And your current expenses are");
@@ -73,10 +73,5 @@ function deleteExpense(id) {
     }, 5000);
 }
 
-deleteExpense(1)
-
-
-
-
-
+deleteExpense()
 
