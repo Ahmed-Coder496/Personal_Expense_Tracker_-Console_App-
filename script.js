@@ -2,10 +2,16 @@ const fs = require("fs")
 const filePath = "./script.json"
 const dt = new Date()
 
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Creation of JSON file ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// JSON file creation and initialize by []
+
 function createJsonFile() {
     return fs.writeFileSync(filePath, "[]");
 }
 createJsonFile()
+
+// This function reads the JSON file previous expenses
 
 function readExpenses() {
     const previousExpenses = fs.readFileSync(filePath, "utf-8");
@@ -13,9 +19,15 @@ function readExpenses() {
 }
 readExpenses()
 
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Records of Expenses +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// This function writes an expenses
+
 function writeExpenses(expenses) {
     fs.writeFileSync(filePath, JSON.stringify(expenses, null, 2))
 }
+
+// This function reads previous expenses and push the new expenses with ID
 
 function addExpenses(amount, cetegory, subCetegory, description, date) {
     const expenses = readExpenses()
@@ -25,10 +37,11 @@ function addExpenses(amount, cetegory, subCetegory, description, date) {
 
 }
 
-function viewExpenses (){
+// This function displays all expenses on terminal
+
+function viewExpenses() {
     const allExpenses = readExpenses()
     console.log(`All Expenses:`, allExpenses);
-
 }
 
 addExpenses("199$", "Food", "Resturent", "Mc,Donals Lunch", (dt.toLocaleDateString("en-PK")))
@@ -36,29 +49,30 @@ addExpenses("270$", "tarvel", "Flight", "Flight of UK", (dt.toLocaleDateString("
 addExpenses("10$", "bills", "Internet Recharge", "Zong ka internet recharge kawana hai", (dt.toLocaleDateString("en-PK")))
 viewExpenses()
 
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++ Deletion of Expenses by ID +++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// This function deletes the expenses by id
+
 function deleteExpense(id) {
     const expenses = readExpenses();
     const index = expenses.findIndex(exp => exp.id === id);
 
+    // In this statement if ID equals to -1 so it's returns is Expense not found!
     if (index === -1) {
         console.log("Expense not found!");
         return;
     }
 
+    // It deletes the expense
     const deletedExpense = expenses[index];
-    expenses.splice(index, 1); // remove
+    expenses.splice(index, 1);
 
     console.log(" Expense deleted. Undo within 5 seconds...");
 
-    // Wait for Undo
-    setTimeout(() => {
-        const readline = require("readline").createInterface({
-            input: process.stdin,
-            output: process.stdout
-        });
+// +++++++++++++++++++++++++++++++++++++++++++ Undo the deletion action in the timer of 5 sec +++++++++++++++++++++++++++++++++++++++++++
 
-        readline.question("Do you want to undo your action?", (answer) => {
-            if (answer.toLowerCase() === "yes") {
+    setTimeout(() => {
+            if (false) {
                 expenses.splice(index, 0, deletedExpense); // restore
                 writeExpenses(expenses);
                 console.log("Deletion Cancelled. Expense Restored!");
@@ -68,10 +82,32 @@ function deleteExpense(id) {
                 console.log("Expense Permanently Deleted. And your current expenses are");
                 viewExpenses()
             }
-            readline.close();
-        });
     }, 5000);
 }
+deleteExpense(1)
 
-deleteExpense()
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Updation of Expenses ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function updateExpense(id){
+    const expense = readExpenses()
+    const index = expenses.findIndex(exp => exp.id === id);
+
+    // In this statement if ID equals to -1 so it's returns is Expense not found!
+    if (index === -1) {
+        console.log("Expense not found!");
+        return;
+    }
+
+    const updateExpense = expense[index]
+
+
+}
+
+updateExpense()
+
+
+
+
+
+
 
