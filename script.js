@@ -44,9 +44,9 @@ function viewExpenses() {
     console.log(`All Expenses:`, allExpenses);
 }
 
-addExpenses("199$", "Food", "Resturent", "Mc,Donals Lunch", (dt.toLocaleDateString("en-PK")))
+addExpenses("199$", "Food acs", "Resturent", "Mc,Donals Lunch", (dt.toLocaleDateString("en-PK")))
 addExpenses("270$", "travel", "Flight", "Flight of UK", (dt.toLocaleDateString("en-PK")))
-addExpenses("10$", "bills", "Internet Recharge", "Zong ka internet recharge kawana hai", (dt.toLocaleDateString("en-PK")))
+addExpenses("10$", "bills", "Internet Recharge", "Zong ka internet recharge karwana hai", (dt.toLocaleDateString("en-PK")))
 viewExpenses()
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Updation of Expenses ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -154,24 +154,38 @@ function deleteExpense(id) {
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Sortation of Expenses ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-function sortExpenses({ id, amount, cetegory, subCetegory, description }) {
+function sortExpenses(field = "amount", order = "asc") {
     const expenses = readExpenses();
 
-    // // Filtration by keyword
-    // if (id) {
-    //     expenses = expenses.sort((a, b) => b.id - a.id);
-    // }
-    // console.log();
+    const sorted = [...expenses].sort((a, b) => {
+        // Sorting by id
+        if (field === "id") {
+            return order === "asc"
+                ? a.id - (b.id)
+                : b.id - (a.id);
+        }
+        // Sorting by amount
+        else if (field === "amount") {
+            return order === "asc"
+                ? a.amount.localeCompare(b.amount)
+                : b.amount.localeCompare(a.amount);
+        }
+        // Sorting by description
+        else if (field === "description") {
+            return order === "asc"
+                ? a.description.localeCompare(b.description)
+                : b.description.localeCompare(a.description);
+        } else {
+            return order === "asc"
+                ? a[field] - b[field]
+                : b[field] - a[field];
+        }
+    });
 
-        const byAmountDesc = expenses.sort((a, b) => b.amount - a.amount);
-        console.log("🔽 By Amount (High → Low):", byAmountDesc);
-
+    console.log(`Sorted your expenses by ${field} (${order}):`, sorted);
+    return sorted;
 }
-
-sortExpenses()
-
-
-
+sortExpenses("id", "desc");
 
 
 

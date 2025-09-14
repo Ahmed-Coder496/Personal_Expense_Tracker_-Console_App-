@@ -2,7 +2,7 @@
   {
     "id": 1,
     "amount": "199$",
-    "cetegory": "Food",
+    "cetegory": "Food acs",
     "subCetegory": "Resturent",
     "description": "Mc,Donals Lunch",
     "date": "14/09/2025"
@@ -20,7 +20,7 @@
     "amount": "10$",
     "cetegory": "bills",
     "subCetegory": "Internet Recharge",
-    "description": "Zong ka internet recharge kawana hai",
+    "description": "Zong ka internet recharge karwana hai",
     "date": "14/09/2025"
   }
 ]
