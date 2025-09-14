@@ -45,9 +45,71 @@ function viewExpenses() {
 }
 
 addExpenses("199$", "Food", "Resturent", "Mc,Donals Lunch", (dt.toLocaleDateString("en-PK")))
-addExpenses("270$", "tarvel", "Flight", "Flight of UK", (dt.toLocaleDateString("en-PK")))
+addExpenses("270$", "travel", "Flight", "Flight of UK", (dt.toLocaleDateString("en-PK")))
 addExpenses("10$", "bills", "Internet Recharge", "Zong ka internet recharge kawana hai", (dt.toLocaleDateString("en-PK")))
 viewExpenses()
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Updation of Expenses ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function updateExpense(id, updatedData) {
+    const expenses = readExpenses()
+
+    const index = expenses.findIndex(exp => exp.id === id);
+
+    // In this statement if ID equals to -1 so it's returns is Expense not found!
+    if (index === -1) {
+        console.log("Expense not found!");
+        return;
+    }
+    expenses[index] = { ...expenses[index], ...updatedData };
+    writeExpenses(expenses);
+    console.log("Your Expense is Updated:", expenses[index]);
+}
+
+// updateExpense(2, {amount:"50$" , cetegory:"travel" , subCetegory:"Texi" , description:"Travel by Texi" , date: (dt.toLocaleDateString("en-PK"))})
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++ Filtration of Expenses +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function filterExpenses({ id, amount, cetegory, subCetegory, description, keyword }) {
+    const expenses = readExpenses();
+
+    // Filtration by id
+    if (id) {
+        expenses = expenses.filter(expense => expense.id === id)
+    }
+
+    // Filtration by amount
+    if (amount) {
+        expenses = expenses.filter(expense => expense.amount.toLowerCase() === amount.toLowerCase())
+    }
+
+    // Filtration by cetegory
+    if (cetegory) {
+        expenses = expenses.filter(expense => expense.cetegory.toLowerCase() === cetegory.toLowerCase())
+    }
+
+    // Filtration by subCetegory
+    if (subCetegory) {
+        expenses = expenses.filter(expense => expense.subCetegory.toLowerCase() === subCetegory.toLowerCase())
+    }
+
+    // Filtration by description
+    if (description) {
+        expenses = expenses.filter(expense => expense.description.toLowerCase() === description.toLowerCase())
+    }
+
+    // Filtration by keyword
+    if (keyword) {
+        expenses = expenses.filter(expense => expense.description.toLowerCase().includes(keyword.toLowerCase()));
+    }
+
+    console.log("Your searched Expense:", expenses);
+    return expenses;
+}
+
+
+// filterExpenses({ keyword: "internet" })
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++ Deletion of Expenses by ID +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -69,41 +131,45 @@ function deleteExpense(id) {
 
     console.log(" Expense deleted. Undo within 5 seconds...");
 
-// +++++++++++++++++++++++++++++++++++++++++++ Undo the deletion action in the timer of 5 sec +++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++++++++++++++++++++++++++++++++++ Undo the deletion action in the timer of 5 sec +++++++++++++++++++++++++++++++++++++++++
 
     setTimeout(() => {
-            if (false) {
-                expenses.splice(index, 0, deletedExpense); // restore
-                writeExpenses(expenses);
-                console.log("Deletion Cancelled. Expense Restored!");
-                viewExpenses()
-            } else {
-                writeExpenses(expenses);
-                console.log("Expense Permanently Deleted. And your current expenses are");
-                viewExpenses()
-            }
+
+        const yes = true;
+        const no = false
+
+        if (no) {
+            expenses.splice(index, 0, deletedExpense); // restore
+            writeExpenses(expenses);
+            console.log("Deletion Cancelled. Expense Restored!");
+            viewExpenses()
+        } else {
+            writeExpenses(expenses);
+            console.log("Expense Permanently Deleted. And your current expenses are");
+            viewExpenses()
+        }
     }, 5000);
 }
-deleteExpense(1)
+// deleteExpense(1)
 
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Updation of Expenses ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Sortation of Expenses ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-function updateExpense(id){
-    const expense = readExpenses()
-    const index = expenses.findIndex(exp => exp.id === id);
+function sortExpenses({ id, amount, cetegory, subCetegory, description }) {
+    const expenses = readExpenses();
 
-    // In this statement if ID equals to -1 so it's returns is Expense not found!
-    if (index === -1) {
-        console.log("Expense not found!");
-        return;
-    }
+    // // Filtration by keyword
+    // if (id) {
+    //     expenses = expenses.sort((a, b) => b.id - a.id);
+    // }
+    // console.log();
 
-    const updateExpense = expense[index]
-
+        const byAmountDesc = expenses.sort((a, b) => b.amount - a.amount);
+        console.log("🔽 By Amount (High → Low):", byAmountDesc);
 
 }
 
-updateExpense()
+sortExpenses()
+
 
 
 
