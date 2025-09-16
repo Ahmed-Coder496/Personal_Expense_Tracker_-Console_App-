@@ -1,26 +1,26 @@
 [
   {
     "id": 1,
-    "amount": "199$",
-    "cetegory": "Food acs",
-    "subCetegory": "Resturent",
+    "amount": 199,
+    "category": "Food acs",
+    "subcategory": "Resturent",
     "description": "Mc,Donals Lunch",
-    "date": "14/09/2025"
+    "date": "1:01:21 pm"
   },
   {
     "id": 2,
-    "amount": "270$",
-    "cetegory": "travel",
-    "subCetegory": "Flight",
+    "amount": 270,
+    "category": "travel",
+    "subcategory": "Flight",
     "description": "Flight of UK",
-    "date": "14/09/2025"
+    "date": "1:01:21 pm"
   },
   {
     "id": 3,
-    "amount": "10$",
-    "cetegory": "bills",
-    "subCetegory": "Internet Recharge",
+    "amount": 10,
+    "category": "bills",
+    "subcategory": "Internet Recharge",
     "description": "Zong ka internet recharge karwana hai",
-    "date": "14/09/2025"
+    "date": "1:01:21 pm"
   }
 ]
