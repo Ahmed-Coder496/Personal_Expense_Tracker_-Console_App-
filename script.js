@@ -7,9 +7,9 @@ const dt = new Date()
 // JSON file creation and initialize by []
 
 function createJsonFile() {
-  if (!fs.existsSync(filePath)) {
-    fs.writeFileSync(filePath, "[]");
-  }
+    if (!fs.existsSync(filePath)) {
+        fs.writeFileSync(filePath, "[]");
+    }
 }
 createJsonFile();
 
@@ -33,7 +33,7 @@ function writeExpenses(expenses) {
 
 function addExpenses(amount, category, subcategory, description) {
     const expenses = readExpenses()
-    const newId = expenses.length + 1; 
+    const newId = expenses.length + 1;
     const expense = {
         id: newId,
         amount: amount,
@@ -75,7 +75,7 @@ function updateExpense(id, updatedData) {
     writeExpenses(expenses);
     console.log("\n Updated Expenses:");
     console.log(" \n Your Expense is Updated:", expenses[index]);
-    
+
 }
 
 // updateExpense(2, {amount:"50$" , category:"travel" , subcategory:"Texi" , description:"Travel by Texi" , date: (dt.toLocaleDateString("en-PK"))})
@@ -116,7 +116,7 @@ function filterExpenses({ id, amount, cetegory, subCetegory, description, keywor
         expenses = expenses.filter(expense => expense.description.toLowerCase().includes(keyword.toLowerCase()));
     }
     console.log("\n Filtered Expenses");
-    
+
     console.log("\n Your searched Expense:", expenses);
     return expenses;
 }
@@ -154,7 +154,7 @@ function sortExpenses(field = "amount", order = "asc") {
     });
 
     console.log("\n Sorted Expense:");
-    
+
     console.log(`\n Sorted your expenses by ${field} (${order}):`, sorted);
     return sorted;
 }
@@ -179,7 +179,7 @@ function deleteExpense(id) {
     expenses.splice(index, 1);
 
     console.log("\n Undo Expense");
-    
+
     console.log("\n Expense deleted. Undo within 5 seconds...");
 
     // +++++++++++++++++++++++++++++++++++++++++ Undo the deletion action in the timer of 5 sec +++++++++++++++++++++++++++++++++++++++++
@@ -203,11 +203,91 @@ function deleteExpense(id) {
 }
 // deleteExpense(1)
 
-const expenses = readExpenses()
-const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
-console.log("💰 Total Expenses:", total);
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Reports of Expenses ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+function generateReports() {
+    const expenses = readExpenses();
 
+    if (expenses.length === 0) {
+        console.log("\n⚠️ No expenses recorded yet!");
+        return;
+    }
 
+    const now = new Date();
 
+    // Helper functions
+    const isSameMonth = (date, month, year) => {
+        const d = new Date(date);
+        return d.getMonth() === month && d.getFullYear() === year;
+    };
+
+    const isSameWeek = (date, refDate) => {
+        const d = new Date(date);
+        const weekStart = new Date(refDate);
+        weekStart.setDate(refDate.getDate() - refDate.getDay()); // Sunday
+        const weekEnd = new Date(weekStart);
+        weekEnd.setDate(weekStart.getDate() + 6); // Saturday
+        return d >= weekStart && d <= weekEnd;
+    };
+
+    // ---- 1. Total Expenses ----
+    const totalAllTime = expenses.reduce((sum, e) => sum + Number(e.amount), 0);
+
+    const totalMonthly = expenses
+        .filter(e => isSameMonth(e.date, now.getMonth(), now.getFullYear()))
+        .reduce((sum, e) => sum + Number(e.amount), 0);
+
+    const totalWeekly = expenses
+        .filter(e => isSameWeek(e.date, now))
+        .reduce((sum, e) => sum + Number(e.amount), 0);
+
+    // ---- 2. Category Breakdown ----
+    const categoryBreakdown = {};
+    expenses.forEach(e => {
+        const cat = e.category || "Uncategorized";
+        categoryBreakdown[cat] = (categoryBreakdown[cat] || 0) + Number(e.amount);
+    });
+
+    // ---- 3. Sub-category Breakdown ----
+    const subCategoryBreakdown = {};
+    expenses.forEach(e => {
+        const sub = e.subcategory || "Unspecified";
+        subCategoryBreakdown[sub] = (subCategoryBreakdown[sub] || 0) + Number(e.amount);
+    });
+
+    // ---- 4. Highest & Lowest ----
+    const highestExpense = expenses.reduce((max, e) => (e.amount > max.amount ? e : max), expenses[0]);
+    const lowestExpense = expenses.reduce((min, e) => (e.amount < min.amount ? e : min), expenses[0]);
+
+    // ---- 5. Average Spending ----
+    const average = totalAllTime / expenses.length;
+
+    // ---- 6. Spending Trends (monthly) ----
+    const trends = {};
+    expenses.forEach(e => {
+        const d = new Date(e.date);
+        const key = `${d.getFullYear()}-${d.getMonth() + 1}`;
+        trends[key] = (trends[key] || 0) + Number(e.amount);
+    });
+
+    // ---- Print Report ----
+    console.log("\n📊 Expense Reports");
+    console.log("------------------------------------------------");
+    console.log("💰 Total All-Time:", totalAllTime);
+    console.log("🗓️ Total This Month:", totalMonthly);
+    console.log("📅 Total This Week:", totalWeekly);
+
+    console.log("\n📂 Category-wise Breakdown:", categoryBreakdown);
+    console.log("\n📂 Sub-category Breakdown:", subCategoryBreakdown);
+
+    console.log("\n⬆️ Highest Expense:", highestExpense);
+    console.log("⬇️ Lowest Expense:", lowestExpense);
+
+    console.log("\n📊 Average Spending:", average.toFixed(2));
+
+    console.log("\n📈 Spending Trends (by month):", trends);
+}
+
+// Call reports
+generateReports();
 

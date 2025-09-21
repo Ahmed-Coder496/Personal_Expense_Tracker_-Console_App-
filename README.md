@@ -57,10 +57,3 @@ subCategory: "Restaurant",
 description: "Lunch at McDonald’s",
 date: "2025-09-05T14:30:00.000Z"
 }
-Development Rules
-- Work in a full modular and structured way.
-- Follow clean coding principles (separate files for logic, storage, reporting, etc.).
-- Architecture should be maintainable.
-- No shortcuts, no messy code.
-- No AI generated code will be accepted.
-- Strict timeline: 5th September – 15th September (10 days). 

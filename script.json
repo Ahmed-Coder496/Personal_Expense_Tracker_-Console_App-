@@ -22,5 +22,29 @@
     "subcategory": "Internet Recharge",
     "description": "Zong ka internet recharge karwana hai",
     "date": "1:01:21 pm"
+  },
+  {
+    "id": 4,
+    "amount": 199,
+    "category": "Food acs",
+    "subcategory": "Resturent",
+    "description": "Mc,Donals Lunch",
+    "date": "3:29:55 am"
+  },
+  {
+    "id": 5,
+    "amount": 270,
+    "category": "travel",
+    "subcategory": "Flight",
+    "description": "Flight of UK",
+    "date": "3:29:55 am"
+  },
+  {
+    "id": 6,
+    "amount": 10,
+    "category": "bills",
+    "subcategory": "Internet Recharge",
+    "description": "Zong ka internet recharge karwana hai",
+    "date": "3:29:55 am"
   }
 ]
